@@ -36,7 +36,7 @@ export default function Portfolio() {
       details: "Developed using Java with Spring Boot, React, and TailwindCSS, and backed by a MySQL relational database. It integrates with APIs such as PayPal, Firebase Storage, and Google Maps. Key features include item buying/selling, user chats, notifications, and user management.",
       color: "#FF00FF",
       theme: ["Web application"],
-      img: <img src="./images/swapix_logo_blank.png" alt="Neon Vice" />,
+      img: <img src="./images/Swapix/logo.png" alt="Swapix logo" />,
       github: "https://github.com/MartinTorreira/swapix",
       images: [
         "/images/Swapix/1.png",
@@ -46,26 +46,33 @@ export default function Portfolio() {
     },
     {
       id: 2,
-      title: "LIBERTY CODE",
-      description: "Interactive particle physics simulation",
-      details: "Real-time physics visualization using WebGL. Manipulate particles with mouse gestures, adjust charge and mass - just like the chaotic streets of Liberty City.",
+      title: "PHOTOGRAM",
+      description: "Social media web application with user accounts, friendships, posts, rates and comments.",
+      details: "Developed using .NET, C#, ASP.NET and CSS, and backed by MySQL relational database using SQL Server. Key features include user authentication, post creation, commenting, and user management.",
       color: "#00FFFF",
-      emoji: "⚛️",
-      theme: "liberty",
-      github: "https://github.com/MartinTorreira/swapix",
+      theme: ["Social media web"],
+      img: <img src="./images/Photogram/logo.png" className="" alt="Photogram logo" />,
+      github: "https://github.com/MartinTorreira/Photogram",
       images: [
-        "/images/Liberty/1.png",
-        "/images/Liberty/2.png"
+        "/images/Photogram/1.png",
+        "/images/Photogram/2.png",
+        "/images/Photogram/3.png"
       ]
     },
     {
       id: 3,
-      title: "SAN ANDREAS UI",
-      description: "Fluid UI with morphing shapes",
-      details: "Experimental interface where elements behave like the ocean waves of San Andreas. Components merge and separate based on user interaction with West Coast vibes.",
+      title: "Bank manager",
+      description: "Concurrent bank manager developed in C using multiple threads and mutex for synchronization.",
+      details: "Developed using C and mutex, this project simulates a bank manager with multiple clients and a single bank. It includes features like account management, transactions, and deposits.",
       color: "#FFA500",
-      emoji: "🌊",
-      theme: "sanandreas"
+      img: <img src="./images/bank_manager/logo.webp" className="" alt="Bank manager logo" />,
+      theme: "sanandreas",
+      github: "https://github.com/MartinTorreira/bank-manager",
+      images: [
+        "/images/bank_manager/1.png",
+        "/images/bank_manager/2.png",
+        "/images/bank_manager/3.png"
+      ]
     },
   ];
 
@@ -355,7 +362,7 @@ export default function Portfolio() {
               >
                 {/* Project image placeholder with theme-based gradient */}
                 <motion.div
-                  className="h-56 w-full relative overflow-hidden transition-all duration-400"
+                  className="h-fit w-full overflow-hidden transition-all"
                   style={{
                     background: `linear-gradient(135deg, ${project.color}20, #000000)`
                   }}
@@ -450,8 +457,6 @@ export default function Portfolio() {
                         )
                       }
                     </div>
-
-                    
                   </motion.div>
                 </div>
 
@@ -820,15 +825,15 @@ export default function Portfolio() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4 backdrop-blur-lg"
+              className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 backdrop-blur-lg"
             >
               <motion.div
                 ref={modalRef}
-                className="bg-gradient-to-b from-gray-900 to-black rounded-xl max-w-2xl w-fit max-h-[90vh] overflow-y-auto relative shadow-2xl border border-gray-800"
+                className="bg-black rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative border-2 border-gray-800 shadow-2xl hide-scrollbar"
                 initial={{
-                  scale: 0.7,
+                  scale: 0.8,
                   opacity: 0,
-                  y: 100
+                  y: 50
                 }}
                 animate={{
                   scale: 1,
@@ -836,149 +841,192 @@ export default function Portfolio() {
                   y: 0,
                   transition: {
                     type: "spring",
-                    damping: 20,
-                    stiffness: 300,
-                    mass: 0.5
+                    damping: 25,
+                    stiffness: 250
                   }
                 }}
                 exit={{
-                  scale: 0.5,
+                  scale: 0.8,
                   opacity: 0,
-                  y: -100,
-                  transition: { duration: 0.4 }
+                  y: 50,
+                  transition: { duration: 0.3 }
                 }}
-                onWheel={e => e.stopPropagation()} 
+                style={{
+                  background: `
+              linear-gradient(135deg, ${selectedProject.color}10 0%, #000000 50%, ${selectedProject.color}10 100%)
+            `,
+                  boxShadow: `0 0 30px ${selectedProject.color}30`
+                }}
+                onWheel={e => e.stopPropagation()}
               >
-                <motion.button
-                  className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl z-10 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-800 transition-all"
-                  onClick={() => setSelectedProject(null)}
-                  whileHover={{
-                    rotate: 180,
-                    scale: 1.2,
-                    backgroundColor: "rgba(255, 0, 255, 0.2)"
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  &times;
-                </motion.button>
-
-                <div className="p-8">
-                  {/* Project header */}
-                  <motion.div
-                    className="flex items-start gap-6 mb-8"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                {/* Header with GTA-style title and close button */}
+                <div className="sticky top-0 z-10 bg-black bg-opacity-90 backdrop-blur-md border-b border-gray-800 p-4 flex justify-between items-center">
+                  <motion.h2
+                    className="text-2xl font-bold uppercase tracking-wider"
+                    style={{
+                      color: selectedProject.color,
+                      textShadow: `0 0 10px ${selectedProject.color}80`
+                    }}
                   >
+                    {selectedProject.title}
+                  </motion.h2>
 
-                    <div>
-                      <motion.h3
-                        className="text-3xl font-bold mb-2 text-white"
-                        style={{ color: selectedProject.color }}
-                      >
-                        {selectedProject.title}
-                      </motion.h3>
-                      <motion.p
-                        className="text-gray-400 uppercase tracking-wider text-sm"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                      >
-                        {selectedProject.description}
-                      </motion.p>
-                    </div>
-                  </motion.div>
-
-                  {/* Project showcase */}
-                  <motion.div
-                    className={`h-auto w-auto mb-8 rounded-lg relative overflow-hidden bg-gradient-to-br from-${selectedProject.theme}-900 to-black flex items-center justify-between`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                  <motion.button
+                    className="text-gray-400 hover:text-white text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-800 transition-all"
+                    onClick={() => setSelectedProject(null)}
+                    whileHover={{
+                      rotate: 90,
+                      scale: 1.1,
+                      backgroundColor: "rgba(255, 0, 0, 0.3)"
+                    }}
+                    whileTap={{ scale: 0.9 }}
                   >
+                    &times;
+                  </motion.button>
+                </div>
 
-                    {/* Animated background effects */}
-                    <motion.div />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 grid-rows-2 gap-4 w-full max-w-2xl mx-auto">
-                      {selectedProject.images && selectedProject.images.map((src, idx) => (
-                        <motion.div
-                          key={src}
-                          className={`
-                            ${idx === 0 ? "lg:col-span-2 lg:row-span-2 sm:col-span-2" : ""}
-                            col-span-1 row-span-1 flex opacity-70 hover:scale-105 cursor-pointer
-                          `}
-                          onClick={() => setFullImage(src)}
-                        >
-                          <img
-                            src={src}
-                            alt={`${selectedProject.title} ${idx + 1}`}
-                            className="w-full h-full max-h-60 object-cover rounded-md shadow-lg"
-                          />
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                  {/* Project details */}
-                  <motion.div
-                    className="mb-8"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                  >
-                    <motion.h4
-                      className="text-xl font-bold mb-4 text-white uppercase tracking-wider"
+                {/* Hero image with GTA-style overlay */}
+                <div className="relative h-64 overflow-hidden border-b border-gray-800">
+                  {selectedProject.images && selectedProject.images[0] && (
+                    <img
+                      src={selectedProject.images[0]}
+                      alt={selectedProject.title}
+                      className="w-full h-full object-cover opacity-40"
+                    />
+                  )}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(to bottom, transparent 60%, black 100%)`
+                    }}
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(to right, ${selectedProject.color}20 0%, transparent 50%)`
+                    }}
+                  />
+                  <div className="absolute bottom-0 left-0 p-6">
+                    <motion.p
+                      className="text-white font-bold text-lg uppercase tracking-wider"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
                     >
-                      Project Details
-                    </motion.h4>
-                    <motion.p
-                      className="text-gray-300 mb-6"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                    >
-                      {selectedProject.details}
+                      {selectedProject.description}
                     </motion.p>
+                  </div>
+                </div>
 
-                    <motion.div
-                      className="flex flex-wrap gap-3 mb-6"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                    >
-                      {['React', 'WebGL', 'Framer Motion', 'GSAP', 'Three.js', 'Shader Programming'].map((tech) => (
-                        <motion.span
-                          key={tech}
-                          className="px-3 py-1 rounded-full text-sm bg-gray-800 text-white"
-                          whileHover={{
-                            scale: 1.05,
-                            backgroundColor: selectedProject.color,
-                            color: "white"
-                          }}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </motion.div>
-                  </motion.div>
+                {/* Content grid - GTA-style layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+                  {/* Main content column */}
+                  <div className="lg:col-span-2">
+                    {/* Project details with GTA-style tabs */}
+                    <div className="mb-8">
+                      <motion.p
+                        className="text-gray-300 mb-6 leading-relaxed"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        {selectedProject.details}
+                      </motion.p>
+                    </div>
 
-                  {/* Action buttons */}
-                  <motion.div
-                    className="flex flex-wrap gap-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                  >
-                    <motion.a
-                      href="#"
-                      className="px-6 py-3 bg-gradient-to-r from-[#FF00FF] to-[#00FFFF] text-white rounded-lg font-bold uppercase tracking-wider text-sm shadow-lg flex items-center gap-2"
-                      whileHover={{
-                        scale: 1.05,
-                        boxShadow: `0 0 20px ${selectedProject.color}80`
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                      </svg>
-                      Source Code
-                    </motion.a>
-                  </motion.div>
+                    {/* Image gallery - GTA-style grid */}
+                    {selectedProject.images && selectedProject.images.length > 1 && (
+                      <div className="mb-8">
+                        <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-wider flex items-center">
+                          <span
+                            className="inline-block w-4 h-4 mr-2"
+                            style={{ backgroundColor: selectedProject.color }}
+                          />
+                          Gallery
+                        </h3>
+
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                          {selectedProject.images.slice(1).map((src, idx) => (
+                            <motion.div
+                              key={idx}
+                              className="relative overflow-hidden rounded-md cursor-pointer group"
+                              whileHover={{ scale: 1.03 }}
+                              onClick={() => setFullImage(src)}
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: 0.1 * idx }}
+                            >
+                              <img
+                                src={src}
+                                alt={`${selectedProject.title} ${idx + 1}`}
+                                className="w-full h-32 object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                              />
+                              <div
+                                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                                style={{ backgroundColor: `${selectedProject.color}40` }}
+                              >
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <circle cx="11" cy="11" r="8"></circle>
+                                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Sidebar - GTA-style stats panel */}
+                  <div className="lg:col-span-1">
+                    <div className="bg-gray-900 bg-opacity-50 border border-gray-800 rounded-lg p-6">
+                      <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-wider flex items-center">
+                        <span
+                          className="inline-block w-4 h-4 mr-2"
+                          style={{ backgroundColor: selectedProject.color }}
+                        />
+                        Project Details
+                      </h3>
+
+                      <div className="space-y-4">
+                        <div>
+                          <h4 className="text-xs uppercase tracking-wider text-gray-400 mb-2">Technologies</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {['React', 'Spring Boot', 'MySQL', 'TailwindCSS'].map((tech) => (
+                              <span
+                                key={tech}
+                                className="px-2 py-1 text-xs rounded bg-gray-800 text-white"
+                                style={{ border: `1px solid ${selectedProject.color}` }}
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div>
+                          <h4 className="text-xs uppercase tracking-wider text-gray-400 mb-1">Year</h4>
+                          <p className="text-white font-medium">2025</p>
+                        </div>
+
+                        <div>
+                          <h4 className="text-xs uppercase tracking-wider text-gray-400 mb-1">Repository</h4>
+                          <motion.a
+                            href={selectedProject.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#FF00FF] hover:text-[#00FFFF] transition-colors flex items-center"
+                            whileHover={{ x: 5 }}
+                          >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                            View on GitHub
+                          </motion.a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
