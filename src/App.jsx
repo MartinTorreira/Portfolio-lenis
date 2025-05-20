@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useAnimation, useInView } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import React from "react";
-
+import { linkedinIcon } from "../images/logos/linkedn";
 export default function Portfolio() {
   // Enhanced Lenis smooth scroll with GTA-style inertia
   useEffect(() => {
@@ -61,12 +61,12 @@ export default function Portfolio() {
     },
     {
       id: 3,
-      title: "Bank manager",
+      title: "BANK MANAGER",
       description: "Concurrent bank manager developed in C using multiple threads and mutex for synchronization.",
       details: "Developed using C and mutex, this project simulates a bank manager with multiple clients and a single bank. It includes features like account management, transactions, and deposits.",
       color: "#FFA500",
-      img: <img src="./images/bank_manager/logo.webp" className="" alt="Bank manager logo" />,
-      theme: "sanandreas",
+      img: <img src="./images/bank_manager/logo.png" className="" alt="Bank manager logo" />,
+      theme: ["Multithreading"],
       github: "https://github.com/MartinTorreira/bank-manager",
       images: [
         "/images/bank_manager/1.png",
@@ -78,23 +78,17 @@ export default function Portfolio() {
 
   const experience = [
     {
-      company: "VICE CITY INTERACTIVE",
-      role: "Lead Frontend Developer",
-      period: "2022 - Present",
-      description: "Building criminal... I mean, creative interactive UIs with React, Framer Motion and WebGL. Specializing in animations inspired by 80s Miami and underground culture."
+      company: "Accenture",
+      role: "Regular contractor",
+      period: "2025 - Present",
+      description: " I design, implement, and customize Product Lifecycle Management solutions, integrating them with other systems to optimize engineering workflows and manage product data."
     },
     {
-      company: "ROCKSTAR WEB STUDIOS",
-      role: "UI/UX Specialist",
-      period: "2020 - 2022",
-      description: "Designing digital experiences with focus on high-impact animations, microinteractions and effects that would make even the most hardened criminal impressed."
+      company: "Randstad",
+      role: "Warehouse worker",
+      period: "2022 - 2023",
+      description: "Performing loading and unloading tasks in some warehouses"
     },
-    {
-      company: "LOS SANTOS DIGITAL",
-      role: "Junior Designer",
-      period: "2018 - 2020",
-      description: "Started my career in the fast-paced world of Los Santos digital design. Learned to work under pressure and deliver results that stand out in a crowded market."
-    }
   ];
 
   // Modal click outside
@@ -135,7 +129,7 @@ export default function Portfolio() {
   const [fullImage, setFullImage] = useState(null);
 
   return (
-    <main className="bg-black text-white min-h-screen font-sans relative overflow-x-hidden">
+    <main className="bg-black text-white min-h-screen font-sans relative overflow-x-hidden font-montserrat">
       {/* GTA VI STYLE HEADER WITH SCROLL EFFECT */}
       <motion.header
         className="fixed top-0 left-0 w-full z-50 transition-all duration-300"
@@ -166,21 +160,20 @@ export default function Portfolio() {
               </motion.a>
             ))}
           </motion.nav>
-
+          {/* Framer Motion animation for the "Not Currently Looking for Work" button */}
           <motion.button
-            className="px-6 py-2 bg-gradient-to-r from-[#FF00FF] to-[#00FFFF] text-white rounded-full font-bold shadow-lg transition-all"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            className="px-3 py-1.5 bg-white text-slate-900 rounded-full font-bold shadow-lg uppercase text-sm tracking-wider relative overflow-hidden opacity-40"
+            transition={{ delay: 0, duration: 0.5 }}
             whileHover={{
-              scale: 1.05,
               boxShadow: "0 0 20px rgba(255, 0, 255, 0.5)"
             }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 1.50 }}
+            style={{ textDecoration: 'line-through', textDecorationColor: 'rgba(15, 23, 42, 1)' }}
           >
             HIRE ME
           </motion.button>
         </div>
-      </motion.header>
+      </motion.header >
 
       {/* HERO SECTION WITH GTA VI TITLE EFFECT */}
       <motion.section
@@ -243,7 +236,11 @@ export default function Portfolio() {
               }
             }}
           >
-            <span>Martin Torreira</span>
+            <span className="flex flex-col">
+              <a>Martín Torreira</a>
+              <a>Portos</a>
+            </span>
+
           </motion.h1>
 
           <motion.p
@@ -288,7 +285,7 @@ export default function Portfolio() {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+          className="absolute bottom-10  transform -translate-x-1/2 flex flex-col items-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5 }}
@@ -315,7 +312,7 @@ export default function Portfolio() {
       {/* PROJECTS SECTION - GTA VI STYLE GRID */}
       <motion.section
         id="projects"
-        className="min-h-screen px-6 py-32 bg-black relative overflow-hidden"
+        className="min-h-screen px-12 py-32 bg-black relative overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -327,7 +324,7 @@ export default function Portfolio() {
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-[#0f0524] to-black opacity-90"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 px-20">
+        <div className="max-w-7xl mx-auto relative z-10 px-32">
           <motion.div
             className="mb-20"
             initial={{ opacity: 0, y: -20 }}
@@ -500,7 +497,7 @@ export default function Portfolio() {
             viewport={{ once: true }}
           >
             <motion.h2
-              className="text-4xl font-bold mb-4 uppercase tracking-widest"
+              className="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-widest"
               style={{
                 background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
                 WebkitBackgroundClip: 'text',
@@ -512,40 +509,82 @@ export default function Portfolio() {
             </motion.h2>
           </motion.div>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#FF00FF] to-[#00FFFF]"></div>
+          <div className="relative pl-12 md:pl-0">
+            {/* Main timeline line */}
+            <div className="absolute left-6 md:left-1/2 h-full w-0.5 bg-gradient-to-b from-[#FF00FF] to-[#00FFFF] z-0"></div>
 
-            {experience.map((exp, i) => (
-              <motion.div
-                key={exp.company}
-                className={`mb-12 w-full flex ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: i * 0.2 }}
-                viewport={{ once: true }}
-              >
-                <div className={`w-full md:w-1/2 p-6 rounded-xl border border-gray-800 bg-gradient-to-b ${i % 2 === 0 ? 'from-[#FF00FF10] to-black ml-6' : 'from-[#00FFFF10] to-black mr-6'}`}>
-                  <div className="flex items-start gap-4 mb-4">
-                    <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center text-2xl ${i % 2 === 0 ? 'bg-[#FF00FF20] text-[#FF00FF]' : 'bg-[#00FFFF20] text-[#00FFFF]'}`}
-                    >
-                      {i + 1}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white">{exp.role}</h3>
-                      <div className={`font-semibold ${i % 2 === 0 ? 'text-[#FF00FF]' : 'text-[#00FFFF]'}`}>{exp.company}</div>
-                    </div>
+            <div className="space-y-24">
+              {experience.map((exp, i) => (
+                <motion.div
+                  key={exp.company}
+                  className="relative"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: i * 0.15 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                >
+                  {/* Timeline index number - aligned with card */}
+                  <div className={`absolute -left-12 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-1/2 w-8 h-8 rounded-full flex items-center justify-center font-bold border-2 border-black z-10 ${i % 2 === 0
+                    ? 'bg-[#FF00FF] text-black'
+                    : 'bg-[#00FFFF] text-black'
+                    }`}>
+                    {i + 1}
                   </div>
-                  <div className="text-gray-400 text-sm mb-3">{exp.period}</div>
-                  <p className="text-gray-300">{exp.description}</p>
-                </div>
-              </motion.div>
-            ))}
+
+                  {/* Connector line for mobile */}
+                  <div className="absolute -left-6 top-1/2 w-6 h-0.5 bg-gradient-to-r from-[#FF00FF] to-[#00FFFF] md:hidden"></div>
+
+                  {/* Experience card */}
+                  <div className={`ml-4 md:ml-0 md:w-[45%] p-6 rounded-xl border border-gray-800 bg-gradient-to-b ${i % 2 === 0
+                    ? 'md:mr-auto from-[#FF00FF10] to-black'
+                    : 'md:ml-auto from-[#00FFFF10] to-black'
+                    }`}>
+                    <div className="flex items-start gap-4 mb-4">
+                      <div
+                        className={`w-12 h-12 rounded-full flex items-center justify-center text-2xl ${i % 2 === 0
+                          ? 'bg-[#FF00FF20] text-[#FF00FF]'
+                          : 'bg-[#00FFFF20] text-[#00FFFF]'
+                          }`}
+                      >
+                        {i % 2 === 0 ? <img src="/images/logos/accenture.png" className="flex items-center" /> :
+                          <img src="/images/logos/randstad.png" className="flex items-center" />}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white">{exp.role}</h3>
+                        <div className={`font-semibold ${i % 2 === 0 ? 'text-[#FF00FF]' : 'text-[#00FFFF]'
+                          }`}>
+                          {exp.company}
+                        </div>
+                      </div>
+                    </div>
+                    <div className={`text-sm mb-3 ${i % 2 === 0 ? 'text-[#FF00FF90]' : 'text-[#00FFFF90]'
+                      }`}>
+                      {exp.period}
+                    </div>
+                    <p className="text-gray-300 mb-4">{exp.description}</p>
+
+                    {exp.skills && (
+                      <div className="flex flex-wrap gap-2">
+                        {exp.skills.map((skill) => (
+                          <span
+                            key={skill}
+                            className={`text-xs px-2 py-1 rounded-full ${i % 2 === 0
+                              ? 'bg-[#FF00FF10] text-[#FF00FF]'
+                              : 'bg-[#00FFFF10] text-[#00FFFF]'
+                              }`}
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </motion.section>
-
       {/* ABOUT SECTION - GTA VI STYLE */}
       <motion.section
         id="about"
@@ -596,10 +635,10 @@ export default function Portfolio() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="w-full h-96 bg-gradient-to-br from-[#FF00FF20] to-[#00FFFF20] rounded-xl overflow-hidden relative">
+              <div className="h-64 bg-gradient-to-br from-[#FF00FF20] to-[#00FFFF20] rounded-xl overflow-hidden relative">
                 {/* Placeholder for image */}
-                <div className="absolute inset-0 flex items-center justify-center text-8xl">
-                  👨‍💻
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <img src="/images/avatar.png" className="scale-50" />
                 </div>
 
                 {/* Glitch effect on hover */}
@@ -615,28 +654,25 @@ export default function Portfolio() {
             </motion.div>
 
             <motion.div
-              className="space-y-6"
+              className="space-y-4"
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
               <h3 className="text-2xl font-bold text-white">
-                Digital Creator & Interactive Developer
+                Software Engineer
               </h3>
 
               <p className="text-gray-300">
-                I specialize in creating immersive digital experiences with cutting-edge animations and interactions. My work blends technical precision with creative experimentation, always inspired by pop culture, video games, and underground aesthetics.
+                I am a Computer Engineer with academic experience in various fields of engineering, including algorithms, networks, web development, databases, cybersecurity, and operating systems.
               </p>
 
-              <p className="text-gray-300">
-                When I'm not coding, you can find me exploring virtual worlds, analyzing game UI designs, or working on my synthwave music project.
-              </p>
 
               <div className="pt-4">
                 <h4 className="text-lg font-semibold text-white mb-3">Skills & Expertise</h4>
                 <div className="flex flex-wrap gap-3">
-                  {['React', 'WebGL', 'Framer Motion', 'Three.js', 'GSAP', 'UI/UX Design', 'Animation', 'Creative Coding'].map((skill) => (
+                  {['Java', 'JavaScript', 'React', '.NET', 'C#', 'UI/UX Design', 'C', 'Git', 'PostgreSQL', 'Oracle', 'MySQL'].map((skill) => (
                     <motion.span
                       key={skill}
                       className="px-3 py-1 rounded-full text-sm bg-gray-900 text-white border border-gray-800"
@@ -713,7 +749,6 @@ export default function Portfolio() {
               transition={{ delay: 0.3 }}
               viewport={{ once: true }}
             >
-              Want to work together or just say hello? Drop me a message below.
             </motion.p>
           </motion.div>
 
@@ -1089,19 +1124,10 @@ export default function Portfolio() {
               transition={{ delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <span className="text-white">TORREIRA</span>
+              <span className="text-white">Martín Torreira Portos</span>
               <span className="text-[#FF00FF]">.</span>
             </motion.div>
 
-            <motion.p
-              className="text-gray-400 max-w-2xl mx-auto mb-6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              Creating digital experiences that push boundaries and inspire.
-            </motion.p>
 
             <motion.div
               className="flex justify-center gap-6 mb-8"
@@ -1110,35 +1136,25 @@ export default function Portfolio() {
               transition={{ delay: 0.5 }}
               viewport={{ once: true }}
             >
-              {['twitter', 'github', 'dribbble', 'linkedin'].map((social) => (
+              {['github', 'linkedin', 'gmail'].map((social) => (
                 <motion.a
                   key={social}
-                  href="#"
+                  href={social === 'gmail' ? 'mailto:martintorreiraportos@gmail.com' : '#'}
                   className="text-gray-400 hover:text-[#FF00FF] transition-colors"
-                  whileHover={{ scale: 1.2 }}
+                  whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    {social === 'twitter' && <path d="T23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>}
+                    {social === 'linkedin' && <><path stroke="none" d="M0 0h24v24H0z"></path><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 1 0-4 0"></path><path d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"></path></>}
                     {social === 'github' && <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>}
+                    {social === 'gmail' && <><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></>}
                   </svg>
                 </motion.a>
               ))}
             </motion.div>
           </motion.div>
 
-          <motion.div
-            className="border-t border-gray-800 pt-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Martín Torreira. All rights reserved.
-              <span className="block mt-2 text-xs text-gray-600">Inspired by the streets of Vice City</span>
-            </p>
-          </motion.div>
+
         </div>
       </motion.footer>
     </main>

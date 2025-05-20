@@ -5,7 +5,15 @@ module.exports = {
     "./src/**/*.{js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        onest: ["Onest", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+        aleo: ["Aleo", "sans-serif"],
+
+        // Add more custom font families as needed
+      },
+    },
   },
   plugins: [],
 }
