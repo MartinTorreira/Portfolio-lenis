@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useAnimation, useInView } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import React from "react";
-import { linkedinIcon } from "../images/logos/linkedn";
+
 export default function Portfolio() {
   // Enhanced Lenis smooth scroll with GTA-style inertia
   useEffect(() => {
@@ -23,6 +23,12 @@ export default function Portfolio() {
     return () => lenis.destroy();
   }, []);
 
+  const projectsContainerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: projectsContainerRef,
+    offset: ["start start", "end start"]
+  });
+
   // Projects modal state
   const [selectedProject, setSelectedProject] = useState(null);
   const modalRef = useRef(null);
@@ -32,9 +38,9 @@ export default function Portfolio() {
     {
       id: 1,
       title: "SWAPIX",
-      description: "Second-hand marketplace web app with user accounts, listings, location, and PayPal payments.",
+      description: "Second-hand marketplace web app with user accounts, listings, location, and PayPal payments",
       details: "Developed using Java with Spring Boot, React, and TailwindCSS, and backed by a MySQL relational database. It integrates with APIs such as PayPal, Firebase Storage, and Google Maps. Key features include item buying/selling, user chats, notifications, and user management.",
-      color: "#FF00FF",
+      color: "#00FFFF",
       theme: ["Web application"],
       img: <img src="./images/Swapix/logo.png" alt="Swapix logo" />,
       github: "https://github.com/MartinTorreira/swapix",
@@ -47,9 +53,9 @@ export default function Portfolio() {
     {
       id: 2,
       title: "PHOTOGRAM",
-      description: "Social media web application with user accounts, friendships, posts, rates and comments.",
-      details: "Developed using .NET, C#, ASP.NET and CSS, and backed by MySQL relational database using SQL Server. Key features include user authentication, post creation, commenting, and user management.",
-      color: "#00FFFF",
+      description: "Social media web application with user accounts, friendships, posts, rates and comments",
+      details: "Developed using .NET, C#, ASP.NET and CSS, and backed by MySQL relational database using SQL Server. Key features include user authentication, post creation, commenting, and user management",
+      color: "#FF00FF",
       theme: ["Social media web"],
       img: <img src="./images/Photogram/logo.png" className="" alt="Photogram logo" />,
       github: "https://github.com/MartinTorreira/Photogram",
@@ -62,8 +68,8 @@ export default function Portfolio() {
     {
       id: 3,
       title: "BANK MANAGER",
-      description: "Concurrent bank manager developed in C using multiple threads and mutex for synchronization.",
-      details: "Developed using C and mutex, this project simulates a bank manager with multiple clients and a single bank. It includes features like account management, transactions, and deposits.",
+      description: "Concurrent bank manager with multiple threads and mutex for synchronization",
+      details: "Developed using C and mutex, this project simulates a bank manager with multiple clients and a single bank. It includes features like account management, transactions, and deposits",
       color: "#FFA500",
       img: <img src="./images/bank_manager/logo.png" className="" alt="Bank manager logo" />,
       theme: ["Multithreading"],
@@ -81,7 +87,7 @@ export default function Portfolio() {
       company: "Accenture",
       role: "Regular contractor",
       period: "2025 - Present",
-      description: " I design, implement, and customize Product Lifecycle Management solutions, integrating them with other systems to optimize engineering workflows and manage product data."
+      description: " I design, implement, and customize Product Lifecycle Management solutions, integrating them with other systems to optimize engineering workflows and manage product data"
     },
     {
       company: "Randstad",
@@ -90,6 +96,13 @@ export default function Portfolio() {
       description: "Performing loading and unloading tasks in some warehouses"
     },
   ];
+
+
+  const footerLinks = {
+    linkedin: "https://www.linkedin.com/in/mart%C3%ADn-torreira-portos-805b06215/",
+    github: "https://github.com/MartinTorreira",
+    gmail: "mailto::torreira.martin155@gmail.com"
+  }
 
   // Modal click outside
   useEffect(() => {
@@ -125,11 +138,10 @@ export default function Portfolio() {
     };
   }, [selectedProject]);
 
-  const [ventoImage, setVentoImage] = useState(null);
   const [fullImage, setFullImage] = useState(null);
 
   return (
-    <main className="bg-black text-white min-h-screen font-sans relative overflow-x-hidden font-montserrat">
+    <main className="bg-black text-white min-h-screen relative overflow-x-hidden font-montserrat">
       {/* GTA VI STYLE HEADER WITH SCROLL EFFECT */}
       <motion.header
         className="fixed top-0 left-0 w-full z-50 transition-all duration-300"
@@ -309,169 +321,130 @@ export default function Portfolio() {
         </motion.div>
       </motion.section>
 
-      {/* PROJECTS SECTION - GTA VI STYLE GRID */}
+      {/* PROJECTS SECTION - GTA VI STYLE VERTICAL LIST */}
       <motion.section
         id="projects"
-        className="min-h-screen px-12 py-32 bg-black relative overflow-hidden"
+        className="py-32 bg-black relative overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        {/* Background elements */}
+        {/* Fondo */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-[#0f0524] to-black opacity-90"></div>
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0f0524] to-black opacity-90"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 px-32">
-          <motion.div
-            className="mb-20"
-            initial={{ opacity: 0, y: -20 }}
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          {/* Título principal */}
+          <motion.h2
+            className="text-6xl font-extrabold tracking-widest text-center uppercase mb-24"
+            style={{
+              background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent'
+            }}
+            initial={{ opacity: 0, y: -40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <motion.h2
-              className="text-4xl font-bold mb-4 uppercase tracking-widest text-center"
-              style={{
-                background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent'
-              }}
-            >
-              Projects
-            </motion.h2>
-          </motion.div>
+            PROYECTOS
+          </motion.h2>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Lista de proyectos */}
+          <div className="flex flex-col space-y-96 mb-96">
             {projects.map((project, i) => (
               <motion.div
                 key={project.id}
-                className="relative group overflow-hidden rounded-xl border border-gray-800 hover:border-[#FF00FF] transition-all duration-300"
+                className="flex flex-col md:flex-row items-center md:items-start gap-12 cursor-pointer mt-64"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: i * 0.1 }}
-                whileHover="hover"
+                transition={{ duration: 0.8, delay: i * 0.2 }}
                 onClick={() => setSelectedProject(project)}
-                style={{ cursor: "pointer" }}
               >
-                {/* Project image placeholder with theme-based gradient */}
-                <motion.div
-                  className="h-fit w-full overflow-hidden transition-all"
-                  style={{
-                    background: `linear-gradient(135deg, ${project.color}20, #000000)`
-                  }}
-                  variants={{
-                    hover: { scale: 1.05 }
-                  }}
-                >
-                  <motion.div
-                    className="flex h-80 w-fit items-center"
-                    initial={{ opacity: 0.6, scale: 0.8 }}
-                    transition={{ duration: 0.2 }}
-                    variants={{
-                      hover: { opacity: 0.7, scale: 0.85 }
-                    }}
-                  >
+                {/* Imagen del proyecto */}
+                <div className="w-full md:w-1/2 h-64 md:h-[30rem] rounded-3xl overflow-hidden relative border border-gray-800 shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-br from-black to-zinc-900" />
+                  <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
                     {project.img}
-                  </motion.div>
-
-                  {/* Glow effect */}
-                  <motion.div
-                    className="absolute inset-0"
-                    style={{
-                      background: `radial-gradient(circle at center, ${project.color}20 0%, transparent 70%)`
-                    }}
-                    initial={{ opacity: 0 }}
-                    variants={{
-                      hover: { opacity: 1 }
-                    }}
-                  />
-                </motion.div>
-
-                <div className="p-6 bg-gradient-to-b from-gray-900 to-black">
-                  <motion.div
-                    className="flex items-center gap-3 mb-3"
-                    initial={{ opacity: 1 }}
-                    variants={{
-                      hover: { opacity: 1 }
-                    }}
-                  >
-                    <motion.h3
-                      className="text-xl font-bold"
-                      style={{ color: project.color }}
-                    >
-                      {project.title}
-                    </motion.h3>
-                  </motion.div>
-
-                  <motion.p
-                    className="text-gray-300 mb-4"
-                    initial={{ opacity: 1 }}
-                    variants={{
-                      hover: { opacity: 1 }
-                    }}
-                  >
-                    {project.description}
-                  </motion.p>
-
-                  <motion.div
-                    className="flex justify-between items-center"
-                    initial={{ opacity: 1 }}
-                    variants={{
-                      hover: { opacity: 1 }
-                    }}
-                  >
-                    <div className="flex gap-2">
-                      {Array.isArray(project.theme)
-                        ? project.theme.map((item, idx) => (
-                          <span
-                            key={idx}
-                            className="text-xs tracking-wider px-2 py-1 rounded-full"
-                            style={{
-                              backgroundColor: `${project.color}20`,
-                              color: project.color,
-                              border: `1px solid ${project.color}`,
-                              marginRight: "0.10rem"
-                            }}
-                          >
-                            {item}
-                          </span>
-                        ))
-                        : (
-                          <span
-                            className="text-xs uppercase tracking-wider px-3 py-1 rounded-full"
-                            style={{
-                              backgroundColor: `${project.color}20`,
-                              color: project.color,
-                              border: `1px solid ${project.color}`
-                            }}
-                          >
-                            {project.theme}
-                          </span>
-                        )
-                      }
-                    </div>
-                  </motion.div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
                 </div>
 
-                {/* Hover accent */}
-                <motion.div
-                  className="absolute bottom-0 left-0 w-full h-1"
-                  style={{ backgroundColor: project.color }}
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  variants={{
-                    hover: { scaleX: 1, opacity: 1 }
-                  }}
-                  transition={{ duration: 0.4 }}
-                />
+                {/* Contenido del proyecto */}
+                <div className="w-full md:w-1/2 text-center md:text-left">
+                  <h3
+                    className="text-4xl md:text-5xl font-bold uppercase mb-6"
+                    style={{ color: project.color, opacity: 0.65 }}
+                  >
+                    {project.title}
+                  </h3>
+                  <p className={`text-5xl font-bebas font-medium text-gray-400 leading-tight mb-6`}>
+                    {project.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
+
+        {/* Modal informativo */}
+        {selectedProject && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              className="bg-zinc-950 max-w-4xl w-full p-10 rounded-3xl border border-gray-700 relative text-white shadow-2xl"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3
+                className="text-4xl font-bold uppercase mb-6 text-center"
+                style={{ color: selectedProject.color }}
+              >
+                {selectedProject.title}
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed text-center mb-6">
+                {selectedProject.description}
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {(Array.isArray(selectedProject.theme) ? selectedProject.theme : [selectedProject.theme]).map((tag, idx) => (
+                  <span
+                    key={idx}
+                    className="px-4 py-2 text-sm rounded-full border"
+                    style={{
+                      backgroundColor: `${selectedProject.color}20`,
+                      color: selectedProject.color,
+                      borderColor: selectedProject.color
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-6 right-6 text-white text-3xl hover:text-red-500"
+              >
+                &times;
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
       </motion.section>
+
+
+
+
 
       {/* EXPERIENCE SECTION - GTA VI STYLE TIMELINE */}
       <motion.section
@@ -1139,7 +1112,7 @@ export default function Portfolio() {
               {['github', 'linkedin', 'gmail'].map((social) => (
                 <motion.a
                   key={social}
-                  href={social === 'gmail' ? 'mailto:martintorreiraportos@gmail.com' : '#'}
+                  href={footerLinks[social]}
                   className="text-gray-400 hover:text-[#FF00FF] transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}

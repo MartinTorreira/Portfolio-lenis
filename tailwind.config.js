@@ -10,6 +10,7 @@ module.exports = {
         onest: ["Onest", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
         aleo: ["Aleo", "sans-serif"],
+        bebas: ["Bebas Neue"]
 
         // Add more custom font families as needed
       },
