@@ -174,7 +174,7 @@ export default function Portfolio() {
           </motion.nav>
           {/* Framer Motion animation for the "Not Currently Looking for Work" button */}
           <motion.button
-            className="px-3 py-1.5 bg-white text-slate-900 rounded-full font-bold shadow-lg uppercase text-sm tracking-wider relative overflow-hidden opacity-40"
+            className="px-3 py-1.5 bg-white text-slate-900 rounded-full font-bold shadow-lg uppercase text-sm tracking-wider relative overflow-hidden opacity-40 cursor-not-allowed"
             transition={{ delay: 0, duration: 0.5 }}
             whileHover={{
               boxShadow: "0 0 20px rgba(255, 0, 255, 0.5)"
