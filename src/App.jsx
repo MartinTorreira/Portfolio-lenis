@@ -42,8 +42,9 @@ export default function Portfolio() {
       details: "Developed using Java with Spring Boot, React, and TailwindCSS, and backed by a MySQL relational database. It integrates with APIs such as PayPal, Firebase Storage, and Google Maps. Key features include item buying/selling, user chats, notifications, and user management.",
       color: "#00FFFF",
       theme: ["Web application"],
-      img: <img src="./images/Swapix/logo.png" alt="Swapix logo" />,
+      img: "./images/Swapix/logo.png",
       github: "https://github.com/MartinTorreira/swapix",
+      logo: "images/Swapix/logo.png",
       images: [
         "/images/Swapix/1.png",
         "/images/Swapix/3.png",
@@ -59,6 +60,7 @@ export default function Portfolio() {
       theme: ["Social media web"],
       img: <img src="./images/Photogram/logo.png" className="" alt="Photogram logo" />,
       github: "https://github.com/MartinTorreira/Photogram",
+      logo: "images/Photogram/logo.png",
       images: [
         "/images/Photogram/1.png",
         "/images/Photogram/2.png",
@@ -74,6 +76,7 @@ export default function Portfolio() {
       img: <img src="./images/bank_manager/logo.png" className="" alt="Bank manager logo" />,
       theme: ["Multithreading"],
       github: "https://github.com/MartinTorreira/bank-manager",
+      logo: "images/bank_manager/logo.png",
       images: [
         "/images/bank_manager/1.png",
         "/images/bank_manager/2.png",
@@ -85,9 +88,9 @@ export default function Portfolio() {
   const experience = [
     {
       company: "Accenture",
-      role: "Regular contractor",
+      role: "Software Engineer",
       period: "2025 - Present",
-      description: " I design, implement, and customize Product Lifecycle Management solutions, integrating them with other systems to optimize engineering workflows and manage product data"
+      description: "Design, implement, and customize Product Lifecycle Management solutions, integrating them with other systems to optimize engineering workflows and manage product data"
     },
     {
       company: "Randstad",
@@ -229,7 +232,7 @@ export default function Portfolio() {
           transition={{ duration: 1, delay: 0.5 }}
         >
           <motion.h1
-            className="text-6xl sm:text-8xl font-extrabold tracking-tight mb-6 uppercase"
+            className="md:text-8xl text-5xl sm:text-8xl font-extrabold tracking-tight mb-6 uppercase"
             style={{
               background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
               WebkitBackgroundClip: 'text',
@@ -256,7 +259,7 @@ export default function Portfolio() {
           </motion.h1>
 
           <motion.p
-            className="text-xl text-gray-400 mb-8 uppercase tracking-widest"
+            className="md:text-xl text-lg text-gray-400 mb-8 uppercase tracking-widest"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 1 }}
@@ -339,7 +342,7 @@ export default function Portfolio() {
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           {/* Título principal */}
           <motion.h2
-            className="text-6xl font-extrabold tracking-widest text-center uppercase mb-24"
+            className="md:text-6xl text-4xl  font-extrabold tracking-widest text-center uppercase mb-24"
             style={{
               background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
               WebkitBackgroundClip: 'text',
@@ -351,41 +354,60 @@ export default function Portfolio() {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            PROYECTOS
+            PROJECTS
           </motion.h2>
 
           {/* Lista de proyectos */}
-          <div className="flex flex-col space-y-96 mb-96">
+          <div className="flex flex-col gap-24 mb-24 sm:gap-32 sm:mb-32 md:gap-48 md:mb-48">
             {projects.map((project, i) => (
               <motion.div
                 key={project.id}
-                className="flex flex-col md:flex-row items-center md:items-start gap-12 cursor-pointer mt-64"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: i * 0.2 }}
+                className="relative rounded-3xl overflow-hidden shadow-2xl cursor-pointer group mx-auto w-full max-w-3xl sm:max-w-2xl md:max-w-3xl"
+                initial={{ opacity: 0, y: 100, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                whileHover={{
+                  scale: 1.03,
+                  boxShadow: `0 0 60px ${project.color}55`
+                }}
+                viewport={{ once: false, amount: 0.6 }}
+                transition={{
+                  duration: 2,
+                  type: "spring"
+                }}
                 onClick={() => setSelectedProject(project)}
+                style={{ minHeight: "40vh", aspectRatio: "16/9" }}
               >
-                {/* Imagen del proyecto */}
-                <div className="w-full md:w-1/2 h-64 md:h-[30rem] rounded-3xl overflow-hidden relative border border-gray-800 shadow-lg">
-                  <div className="absolute inset-0 bg-gradient-to-br from-black to-zinc-900" />
-                  <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-                    {project.img}
+                {/* Imagen principal */}
+                <img
+                  src={project.images?.[0] || ""}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  draggable={false}
+                />
+                {/* Overlay degradado para el título */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none transition-opacity duration-300 group-hover:from-black/90" />
+                {/* Título y logo */}
+                <motion.div
+                  className="absolute bottom-0 left-0 w-full flex items-end px-4 pb-4 sm:px-8 sm:pb-8 z-10"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <div className="flex items-center gap-2 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-black/60 flex items-center justify-center shadow-lg border-2 border-white/10 overflow-hidden">
+                      <img src={project.logo} alt={project.title} className="object-cover w-full h-full" />
+                    </div>
+                    <span
+                      className="text-xl sm:text-3xl font-extrabold uppercase tracking-wide"
+                      style={{
+                        color: project.color,
+                        textShadow: "0 2px 16px #000, 0 1px 0 #000"
+                      }}
+                    >
+                      {project.title}
+                    </span>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-                </div>
-
-                {/* Contenido del proyecto */}
-                <div className="w-full md:w-1/2 text-center md:text-left">
-                  <h3
-                    className="text-4xl md:text-5xl font-bold uppercase mb-6"
-                    style={{ color: project.color, opacity: 0.65 }}
-                  >
-                    {project.title}
-                  </h3>
-                  <p className={`text-5xl font-bebas font-medium text-gray-400 leading-tight mb-6`}>
-                    {project.description}
-                  </p>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -581,8 +603,8 @@ export default function Portfolio() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <motion.h2
-              className="text-4xl font-bold mb-4 uppercase tracking-widest"
+            <motion.h1
+              className="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-widest"
               style={{
                 background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
                 WebkitBackgroundClip: 'text',
@@ -591,7 +613,7 @@ export default function Portfolio() {
               }}
             >
               About Me
-            </motion.h2>
+            </motion.h1>
           </motion.div>
 
           <motion.div
