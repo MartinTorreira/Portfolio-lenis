@@ -4,7 +4,8 @@ import Lenis from "@studio-freight/lenis";
 import React from "react";
 
 export default function Portfolio() {
-  // Enhanced Lenis smooth scroll with GTA-style inertia
+  
+  // Lenis
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.5,
@@ -29,11 +30,9 @@ export default function Portfolio() {
     offset: ["start start", "end start"]
   });
 
-  // Projects modal state
   const [selectedProject, setSelectedProject] = useState(null);
   const modalRef = useRef(null);
 
-  // Projects data with GTA-style names
   const projects = [
     {
       id: 1,
@@ -50,7 +49,7 @@ export default function Portfolio() {
         "/images/Swapix/3.png",
         "/images/Swapix/4.png"
       ],
-      technologies: ["Java", "Spring Boot","JavaScript","React", "MySQL", "TailwindCSS", "Firebase", "PayPal API", "Google Maps API"]
+      technologies: ["Java", "Spring Boot", "JavaScript", "React", "MySQL", "TailwindCSS", "Firebase", "PayPal API", "Google Maps API"]
     },
     {
       id: 2,
@@ -121,7 +120,7 @@ export default function Portfolio() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Scrolling progress for header effect
+  // Scrolling progress 
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
     const handleScroll = () => {
@@ -131,14 +130,12 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when modal is open
   useEffect(() => {
     if (selectedProject) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-    // Limpieza por si el componente se desmonta con el modal abierto
     return () => {
       document.body.style.overflow = "";
     };
@@ -148,7 +145,6 @@ export default function Portfolio() {
 
   return (
     <main className="bg-black text-white min-h-screen relative overflow-x-hidden font-montserrat">
-      {/* GTA VI STYLE HEADER WITH SCROLL EFFECT */}
       <motion.header
         className="fixed top-0 left-0 w-full z-50 transition-all duration-300"
         style={{
@@ -178,7 +174,6 @@ export default function Portfolio() {
               </motion.a>
             ))}
           </motion.nav>
-          {/* Framer Motion animation for the "Not Currently Looking for Work" button */}
           <motion.button
             className="px-3 py-1.5 bg-white text-slate-900 rounded-full font-bold shadow-lg uppercase text-sm tracking-wider relative overflow-hidden opacity-40 cursor-not-allowed"
             transition={{ delay: 0, duration: 0.5 }}
@@ -193,19 +188,17 @@ export default function Portfolio() {
         </div>
       </motion.header >
 
-      {/* HERO SECTION WITH GTA VI TITLE EFFECT */}
+      {/* HERO SECTION */}
       <motion.section
         className="h-screen flex flex-col justify-center items-center px-4 text-center relative overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black to-[#1a0b2e] opacity-90"></div>
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
 
-          {/* Animated grid lines */}
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
@@ -301,7 +294,7 @@ export default function Portfolio() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll text */}
         <motion.div
           className="absolute bottom-10  transform -translate-x-1/2 flex flex-col items-center"
           initial={{ opacity: 0, y: 20 }}
@@ -327,7 +320,7 @@ export default function Portfolio() {
         </motion.div>
       </motion.section>
 
-      {/* PROJECTS SECTION - GTA VI STYLE VERTICAL LIST */}
+      {/* PROJECTS SECTION */}
       <motion.section
         id="projects"
         className="py-32 bg-black relative overflow-hidden"
@@ -336,14 +329,12 @@ export default function Portfolio() {
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        {/* Fondo */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0f0524] to-black opacity-90"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
-          {/* Título principal */}
           <motion.h2
             className="md:text-6xl text-4xl  font-extrabold tracking-widest text-center uppercase mb-24"
             style={{
@@ -360,7 +351,6 @@ export default function Portfolio() {
             PROJECTS
           </motion.h2>
 
-          {/* Lista de proyectos */}
           <div className="flex flex-col gap-24 mb-24 sm:gap-32 sm:mb-32 md:gap-48 md:mb-48">
             {projects.map((project, i) => (
               <motion.div
@@ -379,16 +369,13 @@ export default function Portfolio() {
                 onClick={() => setSelectedProject(project)}
                 style={{ minHeight: "40vh", aspectRatio: "16/9" }}
               >
-                {/* Imagen principal */}
                 <img
                   src={project.images?.[0] || ""}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   draggable={false}
                 />
-                {/* Overlay degradado para el título */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none transition-opacity duration-300 group-hover:from-black/90" />
-                {/* Título y logo */}
                 <motion.div
                   className="absolute bottom-0 left-0 w-full flex items-end px-4 pb-4 sm:px-8 sm:pb-8 z-10"
                   initial={{ opacity: 0, y: 40 }}
@@ -415,7 +402,6 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Modal informativo */}
         {selectedProject && (
           <motion.div
             className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
@@ -481,7 +467,7 @@ export default function Portfolio() {
       </motion.section>
 
 
-      {/* EXPERIENCE SECTION - GTA VI STYLE TIMELINE */}
+      {/* EXPERIENCE SECTION */}
       <motion.section
         id="experience"
         className="min-h-screen px-6 py-32 bg-gradient-to-br from-[#0f0524] to-black relative overflow-hidden"
@@ -490,7 +476,6 @@ export default function Portfolio() {
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        {/* Background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-[#0f0524] to-black opacity-90"></div>
@@ -518,9 +503,7 @@ export default function Portfolio() {
           </motion.div>
 
           <div className="relative pl-12 md:pl-0">
-            {/* Main timeline line */}
             <div className="absolute left-6 md:left-1/2 h-full w-0.5 bg-gradient-to-b from-[#FF00FF] to-[#00FFFF] z-0"></div>
-
             <div className="space-y-24">
               {experience.map((exp, i) => (
                 <motion.div
@@ -531,7 +514,6 @@ export default function Portfolio() {
                   transition={{ duration: 0.7, delay: i * 0.15 }}
                   viewport={{ once: true, margin: "-50px" }}
                 >
-                  {/* Timeline index number - aligned with card */}
                   <div className={`absolute -left-12 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-1/2 w-8 h-8 rounded-full flex items-center justify-center font-bold border-2 border-black z-10 ${i % 2 === 0
                     ? 'bg-[#FF00FF] text-black'
                     : 'bg-[#00FFFF] text-black'
@@ -539,10 +521,8 @@ export default function Portfolio() {
                     {i + 1}
                   </div>
 
-                  {/* Connector line for mobile */}
                   <div className="absolute -left-6 top-1/2 w-6 h-0.5 bg-gradient-to-r from-[#FF00FF] to-[#00FFFF] md:hidden"></div>
 
-                  {/* Experience card */}
                   <div className={`ml-4 md:ml-0 md:w-[45%] p-6 rounded-xl border border-gray-800 bg-gradient-to-b ${i % 2 === 0
                     ? 'md:mr-auto from-[#FF00FF10] to-black'
                     : 'md:ml-auto from-[#00FFFF10] to-black'
@@ -593,7 +573,8 @@ export default function Portfolio() {
           </div>
         </div>
       </motion.section>
-      {/* ABOUT SECTION - GTA VI STYLE */}
+
+      {/* ABOUT SECTION */}
       <motion.section
         id="about"
         className="min-h-screen px-6 py-32 bg-black relative overflow-hidden"
@@ -602,7 +583,6 @@ export default function Portfolio() {
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        {/* Background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-[#0f0524] to-black opacity-90"></div>
@@ -644,12 +624,9 @@ export default function Portfolio() {
               viewport={{ once: true }}
             >
               <div className="h-64 bg-gradient-to-br from-[#FF00FF20] to-[#00FFFF20] rounded-xl overflow-hidden relative">
-                {/* Placeholder for image */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img src="/images/avatar.png" className="scale-50" />
                 </div>
-
-                {/* Glitch effect on hover */}
                 <motion.div
                   className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-0"
                   whileHover={{
@@ -680,7 +657,7 @@ export default function Portfolio() {
               <div className="pt-4">
                 <h4 className="text-lg font-semibold text-white mb-3">Skills</h4>
                 <div className="flex flex-wrap gap-3">
-                  {['Java', 'JavaScript', 'C', 'C#', 'React', '.NET', 'PostgreSQL', 'Oracle', 'MySQL','Git','UI/UX Design'].map((skill) => (
+                  {['Java', 'JavaScript', 'C', 'C#', 'React', '.NET', 'PostgreSQL', 'Oracle', 'MySQL', 'Git', 'UI/UX Design'].map((skill) => (
                     <motion.span
                       key={skill}
                       className="px-3 py-1 rounded-full text-sm bg-gray-900 text-white border border-gray-800"
@@ -700,7 +677,7 @@ export default function Portfolio() {
         </div>
       </motion.section>
 
-      {/* CONTACT SECTION - GTA VI STYLE */}
+      {/* CONTACT SECTION */}
       <motion.section
         id="contact"
         className="min-h-[40vh] flex flex-col items-center justify-center bg-gradient-to-br from-[#0f0524] to-[#1a0b2e] relative overflow-hidden py-20 px-4"
