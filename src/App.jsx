@@ -308,7 +308,7 @@ export default function Portfolio() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5 }}
         >
-          <span className="text-xs text-gray-400 mb-2 uppercase tracking-widest">Scroll</span>
+          <span className="text-xs text-gray-400 mb-2 uppercase tracking-widest hidden md:inline">Scroll</span>
           <motion.div
             animate={{
               y: [0, 10, 0],
@@ -365,12 +365,11 @@ export default function Portfolio() {
             {projects.map((project, i) => (
               <motion.div
                 key={project.id}
-                className="relative rounded-3xl overflow-hidden shadow-2xl cursor-pointer group mx-auto w-full max-w-3xl sm:max-w-2xl md:max-w-3xl"
+                className="relative rounded-2xl overflow-hidden shadow-2xl cursor-pointer group mx-auto w-full max-w-3xl sm:max-w-2xl md:max-w-3xl"
                 initial={{ opacity: 0, y: 100, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 whileHover={{
                   scale: 1.03,
-                  boxShadow: `0 0 60px ${project.color}55`
                 }}
                 viewport={{ once: false, amount: 0.6 }}
                 transition={{
@@ -384,7 +383,7 @@ export default function Portfolio() {
                 <img
                   src={project.images?.[0] || ""}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   draggable={false}
                 />
                 {/* Overlay degradado para el título */}
@@ -679,9 +678,9 @@ export default function Portfolio() {
 
 
               <div className="pt-4">
-                <h4 className="text-lg font-semibold text-white mb-3">Skills & Expertise</h4>
+                <h4 className="text-lg font-semibold text-white mb-3">Skills</h4>
                 <div className="flex flex-wrap gap-3">
-                  {['Java', 'JavaScript', 'React', '.NET', 'C#', 'UI/UX Design', 'C', 'Git', 'PostgreSQL', 'Oracle', 'MySQL'].map((skill) => (
+                  {['Java', 'JavaScript', 'C', 'C#', 'React', '.NET', 'PostgreSQL', 'Oracle', 'MySQL','Git','UI/UX Design'].map((skill) => (
                     <motion.span
                       key={skill}
                       className="px-3 py-1 rounded-full text-sm bg-gray-900 text-white border border-gray-800"
@@ -704,7 +703,7 @@ export default function Portfolio() {
       {/* CONTACT SECTION - GTA VI STYLE */}
       <motion.section
         id="contact"
-        className="min-h-[40vh] flex flex-col items-center justify-center bg-gradient-to-br from-[#0f0524] to-[#1a0b2e] relative overflow-hidden py-32"
+        className="min-h-[40vh] flex flex-col items-center justify-center bg-gradient-to-br from-[#0f0524] to-[#1a0b2e] relative overflow-hidden py-20 px-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -713,7 +712,7 @@ export default function Portfolio() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0f0524] to-black opacity-90"></div>
         <div className="relative z-10 flex flex-col items-center w-full">
-          <motion.h1
+          <motion.h2
             className="text-4xl md:text-5xl font-bold mb-24 uppercase tracking-widest"
             style={{
               background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
@@ -727,60 +726,62 @@ export default function Portfolio() {
             viewport={{ once: true }}
           >
             Contact Me
-          </motion.h1>
-          <div className="flex gap-12">
-            {[
-              {
-                name: "github",
-                href: footerLinks.github,
-                icon: (
-                  <svg width="56" height="56" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                )
-              },
-              {
-                name: "linkedin",
-                href: footerLinks.linkedin,
-                icon: (
-                  <svg width="56" height="56" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <path stroke="none" d="M0 0h24v24H0z"></path>
-                    <path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 1 0-4 0"></path>
-                    <path d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"></path>
-                  </svg>
-                )
-              },
-              {
-                name: "gmail",
-                href: footerLinks.gmail,
-                icon: (
-                  <svg width="56" height="56" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                )
-              }
-            ].map((social, idx) => (
-              <motion.a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-transform"
-                style={{ filter: social.filter }}
-                whileHover={{
-                  scale: 1.2,
-                  rotate: [0, -10, 10, -10, 0],
-                }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0, type: "spring", stiffness: 200 }}
-                
-              >
-                {social.icon}
-              </motion.a>
-            ))}
+          </motion.h2>
+          <div className="w-full flex justify-center">
+            <div className="flex flex-wrap gap-8 md:gap-16 justify-center items-center">
+              {[
+                {
+                  name: "github",
+                  href: footerLinks.github,
+                  icon: (
+                    <svg width="48" height="48" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                  )
+                },
+                {
+                  name: "linkedin",
+                  href: footerLinks.linkedin,
+                  icon: (
+                    <svg width="48" height="48" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                      <path stroke="none" d="M0 0h24v24H0z"></path>
+                      <path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 1 0-4 0"></path>
+                      <path d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"></path>
+                    </svg>
+                  )
+                },
+                {
+                  name: "gmail",
+                  href: footerLinks.gmail,
+                  icon: (
+                    <svg width="48" height="48" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  )
+                }
+              ].map((social, idx) => (
+                <motion.a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-transform"
+                  style={{ filter: social.filter }}
+                  whileHover={{
+                    scale: 1.2,
+                    rotate: [0, -10, 10, -10, 0],
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0, type: "spring", stiffness: 200 }}
+                  aria-label={social.name}
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
           </div>
         </div>
       </motion.section>
@@ -1043,7 +1044,7 @@ export default function Portfolio() {
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-[#0f0524] to-black opacity-90"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10 mb-40">
           <motion.div
             className="mb-8"
             initial={{ opacity: 0, y: 20 }}
@@ -1061,34 +1062,7 @@ export default function Portfolio() {
               <span className="text-white">Martín Torreira Portos</span>
               <span className="text-[#FF00FF]">.</span>
             </motion.div>
-
-
-            <motion.div
-              className="flex justify-center gap-6 mb-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              viewport={{ once: true }}
-            >
-              {['github', 'linkedin', 'gmail'].map((social) => (
-                <motion.a
-                  key={social}
-                  href={footerLinks[social]}
-                  className="text-gray-400 hover:text-[#FF00FF] transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    {social === 'linkedin' && <><path stroke="none" d="M0 0h24v24H0z"></path><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 1 0-4 0"></path><path d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"></path></>}
-                    {social === 'github' && <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>}
-                    {social === 'gmail' && <><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></>}
-                  </svg>
-                </motion.a>
-              ))}
-            </motion.div>
           </motion.div>
-
-
         </div>
       </motion.footer>
     </main>
