@@ -4,7 +4,7 @@ import Lenis from "@studio-freight/lenis";
 import React from "react";
 
 export default function Portfolio() {
-  
+
   // Lenis
   useEffect(() => {
     const lenis = new Lenis({
@@ -41,13 +41,13 @@ export default function Portfolio() {
       details: "Developed using Java with Spring Boot, React, and TailwindCSS, and backed by a MySQL relational database. It integrates with APIs such as PayPal, Firebase Storage, and Google Maps. Key features include item buying/selling, user chats, notifications, and user management.",
       color: "#00FFFF",
       theme: ["Web application"],
-      img: "./images/Swapix/logo.png",
+      img: "./Swapix/logo.png",
       github: "https://github.com/MartinTorreira/swapix",
       logo: "images/Swapix/logo.png",
       images: [
-        "/images/Swapix/1.png",
-        "/images/Swapix/3.png",
-        "/images/Swapix/4.png"
+        "/Swapix/1.png",
+        "/Swapix/3.png",
+        "/Swapix/4.png"
       ],
       technologies: ["Java", "Spring Boot", "JavaScript", "React", "MySQL", "TailwindCSS", "Firebase", "PayPal API", "Google Maps API"]
     },
@@ -58,13 +58,13 @@ export default function Portfolio() {
       details: "Developed using .NET, C#, ASP.NET and CSS, and backed by MySQL relational database using SQL Server. Key features include user authentication, post creation, commenting, and user management",
       color: "#FF00FF",
       theme: ["Social media web"],
-      img: <img src="./images/Photogram/logo.png" className="" alt="Photogram logo" />,
+      img: <img src="./Photogram/logo.png" className="" alt="Photogram logo" />,
       github: "https://github.com/MartinTorreira/Photogram",
       logo: "images/Photogram/logo.png",
       images: [
-        "/images/Photogram/1.png",
-        "/images/Photogram/2.png",
-        "/images/Photogram/3.png"
+        "/Photogram/1.png",
+        "/Photogram/2.png",
+        "/Photogram/3.png"
       ],
       technologies: ["ASP.NET", "C#", ".NET", "SQL Server", "CSS", "Entity Framework"]
     },
@@ -74,14 +74,14 @@ export default function Portfolio() {
       description: "Concurrent bank manager with multiple threads and mutex for synchronization",
       details: "Developed using C and mutex, this project simulates a bank manager with multiple clients and a single bank. It includes features like account management, transactions, and deposits",
       color: "#FFA500",
-      img: <img src="./images/bank_manager/logo.png" className="" alt="Bank manager logo" />,
+      img: <img src="./bank_manager/logo.png" className="" alt="Bank manager logo" />,
       theme: ["Multithreading"],
       github: "https://github.com/MartinTorreira/bank-manager",
       logo: "images/bank_manager/logo.png",
       images: [
-        "/images/bank_manager/1.png",
-        "/images/bank_manager/2.png",
-        "/images/bank_manager/3.png"
+        "/bank_manager/1.png",
+        "/bank_manager/2.png",
+        "/bank_manager/3.png"
       ],
       technologies: ["C", "Pthreads", "Mutex", "Multithreading", "Concurrency"]
     },
@@ -534,8 +534,8 @@ export default function Portfolio() {
                           : 'bg-[#00FFFF20] text-[#00FFFF]'
                           }`}
                       >
-                        {i % 2 === 0 ? <img src="/images/logos/accenture.png" className="flex items-center" /> :
-                          <img src="/images/logos/randstad.png" className="flex items-center" />}
+                        {i % 2 === 0 ? <img src="/logos/accenture.png" className="flex items-center" /> :
+                          <img src="/logos/randstad.png" className="flex items-center" />}
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-white">{exp.role}</h3>
@@ -625,7 +625,7 @@ export default function Portfolio() {
             >
               <div className="h-64 bg-gradient-to-br from-[#FF00FF20] to-[#00FFFF20] rounded-xl overflow-hidden relative">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <img src="/images/avatar.png" className="scale-50" />
+                  <img src="/avatar.png" className="scale-50" />
                 </div>
                 <motion.div
                   className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-0"
