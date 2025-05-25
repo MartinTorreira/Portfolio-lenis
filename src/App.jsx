@@ -43,7 +43,7 @@ export default function Portfolio() {
       theme: ["Web application"],
       img: "./Swapix/logo.png",
       github: "https://github.com/MartinTorreira/swapix",
-      logo: "images/Swapix/logo.png",
+      logo: "/Swapix/logo.png",
       images: [
         "/Swapix/1.png",
         "/Swapix/3.png",
@@ -60,7 +60,7 @@ export default function Portfolio() {
       theme: ["Social media web"],
       img: <img src="./Photogram/logo.png" className="" alt="Photogram logo" />,
       github: "https://github.com/MartinTorreira/Photogram",
-      logo: "images/Photogram/logo.png",
+      logo: "/Photogram/logo.png",
       images: [
         "/Photogram/1.png",
         "/Photogram/2.png",
@@ -77,7 +77,7 @@ export default function Portfolio() {
       img: <img src="./bank_manager/logo.png" className="" alt="Bank manager logo" />,
       theme: ["Multithreading"],
       github: "https://github.com/MartinTorreira/bank-manager",
-      logo: "images/bank_manager/logo.png",
+      logo: "/bank_manager/logo.png",
       images: [
         "/bank_manager/1.png",
         "/bank_manager/2.png",
