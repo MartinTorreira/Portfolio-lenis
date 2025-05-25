@@ -49,7 +49,8 @@ export default function Portfolio() {
         "/images/Swapix/1.png",
         "/images/Swapix/3.png",
         "/images/Swapix/4.png"
-      ]
+      ],
+      technologies: ["Java", "Spring Boot","JavaScript","React", "MySQL", "TailwindCSS", "Firebase", "PayPal API", "Google Maps API"]
     },
     {
       id: 2,
@@ -65,7 +66,8 @@ export default function Portfolio() {
         "/images/Photogram/1.png",
         "/images/Photogram/2.png",
         "/images/Photogram/3.png"
-      ]
+      ],
+      technologies: ["ASP.NET", "C#", ".NET", "SQL Server", "CSS", "Entity Framework"]
     },
     {
       id: 3,
@@ -81,7 +83,8 @@ export default function Portfolio() {
         "/images/bank_manager/1.png",
         "/images/bank_manager/2.png",
         "/images/bank_manager/3.png"
-      ]
+      ],
+      technologies: ["C", "Pthreads", "Mutex", "Multithreading", "Concurrency"]
     },
   ];
 
@@ -453,6 +456,20 @@ export default function Portfolio() {
                   </span>
                 ))}
               </div>
+              <div>
+                <h4 className="text-xs uppercase tracking-wider text-gray-400 mb-2">Technologies</h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.technologies?.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 text-xs rounded bg-gray-800 text-white"
+                      style={{ border: `1px solid ${selectedProject.color}` }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
               <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-6 right-6 text-white text-3xl hover:text-red-500"
@@ -463,9 +480,6 @@ export default function Portfolio() {
           </motion.div>
         )}
       </motion.section>
-
-
-
 
 
       {/* EXPERIENCE SECTION - GTA VI STYLE TIMELINE */}
@@ -690,159 +704,84 @@ export default function Portfolio() {
       {/* CONTACT SECTION - GTA VI STYLE */}
       <motion.section
         id="contact"
-        className="min-h-screen px-6 py-32 bg-gradient-to-br from-[#0f0524] to-[#1a0b2e] relative overflow-hidden"
+        className="min-h-[40vh] flex flex-col items-center justify-center bg-gradient-to-br from-[#0f0524] to-[#1a0b2e] relative overflow-hidden py-32"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        {/* Background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-[#0f0524] to-black opacity-90"></div>
-
-          {/* Floating grid */}
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute top-0 h-full w-px bg-white opacity-5"
-              style={{ left: `${i * 5}%` }}
-            />
-          ))}
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute left-0 w-full h-px bg-white opacity-5"
-              style={{ top: `${i * 5}%` }}
-            />
-          ))}
-        </div>
-
-        <div className="max-w-4xl mx-auto relative z-10">
-          <motion.div
-            className="mb-20 text-center"
-            initial={{ opacity: 0, y: -20 }}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0f0524] to-black opacity-90"></div>
+        <div className="relative z-10 flex flex-col items-center w-full">
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold mb-24 uppercase tracking-widest"
+            style={{
+              background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent'
+            }}
+            initial={{ opacity: 0, y: -40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <motion.h2
-              className="text-4xl font-bold mb-4 uppercase tracking-widest"
-              style={{
-                background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent'
-              }}
-            >
-              Contact
-            </motion.h2>
-            <motion.p
-              className="text-gray-400 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className="bg-black bg-opacity-50 backdrop-blur-lg rounded-xl border border-gray-800 p-8 shadow-xl"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <form
-              className="space-y-6"
-              action="https://formspree.io/f/mwkgnbep"
-              method="POST"
-            >
-              <motion.div
-                className="space-y-1"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.1 }}
-                viewport={{ once: true }}
+            Contact Me
+          </motion.h1>
+          <div className="flex gap-12">
+            {[
+              {
+                name: "github",
+                href: footerLinks.github,
+                icon: (
+                  <svg width="56" height="56" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                )
+              },
+              {
+                name: "linkedin",
+                href: footerLinks.linkedin,
+                icon: (
+                  <svg width="56" height="56" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path stroke="none" d="M0 0h24v24H0z"></path>
+                    <path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 1 0-4 0"></path>
+                    <path d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"></path>
+                  </svg>
+                )
+              },
+              {
+                name: "gmail",
+                href: footerLinks.gmail,
+                icon: (
+                  <svg width="56" height="56" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                )
+              }
+            ].map((social, idx) => (
+              <motion.a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-transform"
+                style={{ filter: social.filter }}
+                whileHover={{
+                  scale: 1.2,
+                  rotate: [0, -10, 10, -10, 0],
+                }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0, type: "spring", stiffness: 200 }}
+                
               >
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300">Name</label>
-                <motion.input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF00FF] text-white transition-all"
-                  whileFocus={{
-                    scale: 1.01,
-                    boxShadow: "0 0 0 3px rgba(255, 0, 255, 0.2)"
-                  }}
-                />
-              </motion.div>
-
-              <motion.div
-                className="space-y-1"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300">Email</label>
-                <motion.input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00FFFF] text-white transition-all"
-                  whileFocus={{
-                    scale: 1.01,
-                    boxShadow: "0 0 0 3px rgba(0, 255, 255, 0.2)"
-                  }}
-                />
-              </motion.div>
-
-              <motion.div
-                className="space-y-1"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                viewport={{ once: true }}
-              >
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300">Message</label>
-                <motion.textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF00FF] text-white transition-all"
-                  whileFocus={{
-                    scale: 1.01,
-                    boxShadow: "0 0 0 3px rgba(255, 0, 255, 0.2)"
-                  }}
-                ></motion.textarea>
-              </motion.div>
-
-              <motion.div
-                className="pt-2"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <motion.button
-                  type="submit"
-                  className="w-full px-6 py-4 bg-gradient-to-r from-[#FF00FF] to-[#00FFFF] text-white font-bold rounded-lg uppercase tracking-wider shadow-lg"
-                  whileHover={{
-                    scale: 1.02,
-                    boxShadow: "0 0 20px rgba(255, 0, 255, 0.5)"
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Send Message
-                </motion.button>
-              </motion.div>
-            </form>
-          </motion.div>
+                {social.icon}
+              </motion.a>
+            ))}
+          </div>
         </div>
       </motion.section>
 
@@ -1022,7 +961,7 @@ export default function Portfolio() {
                         <div>
                           <h4 className="text-xs uppercase tracking-wider text-gray-400 mb-2">Technologies</h4>
                           <div className="flex flex-wrap gap-2">
-                            {['React', 'Spring Boot', 'MySQL', 'TailwindCSS'].map((tech) => (
+                            {selectedProject.technologies?.map((tech) => (
                               <span
                                 key={tech}
                                 className="px-2 py-1 text-xs rounded bg-gray-800 text-white"
